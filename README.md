@@ -10,6 +10,8 @@
 - Kaleci, Defans, Ortasaha ve Forvet mevkileri
 - Sınırsız yedek oyuncu ekleme
 - Oyuncuları sahada sürükleyip bırakarak serbestçe konumlandırma
+- Sahadaki oyuncuya dokunarak yedekle hızlı değişiklik yapma
+- Oyuncu değişikliğinde saha konumunu ve savunma eşleşmesini koruma
 - Kadro büyüklüğüne uygun hazır dizilişler kullanma
 - Adam adama savunma eşleşmeleri oluşturma
 - Alan savunması bölgeleri çizme
@@ -32,9 +34,10 @@
 1. Sol üstteki kadro seçicisinden maç formatını belirleyin.
 2. **Bizim takım** ve **Rakip** sekmelerinden oyuncuları düzenleyin.
 3. Oyuncuları saha üzerinde sürükleyerek istediğiniz yerleşimi oluşturun.
-4. **Ok**, **Alan** ve **Eşleştir** araçlarıyla taktik detaylarını ekleyin.
-5. Taktik notlarını sağ paneldeki alana yazın.
-6. **Görseli paylaş** ile bütün planı tek PNG dosyası hâline getirin.
+4. Hızlı oyuncu değişikliği için sahadaki oyuncuya kısa dokunup yerine girecek yedeği seçin.
+5. **Ok**, **Alan** ve **Eşleştir** araçlarıyla taktik detaylarını ekleyin.
+6. Taktik notlarını sağ paneldeki alana yazın.
+7. **Görseli paylaş** ile bütün planı tek PNG dosyası hâline getirin.
 
 İlk ziyarette açılan kısa kullanım rehberi, **Yardım** düğmesiyle tekrar görüntülenebilir.
 
