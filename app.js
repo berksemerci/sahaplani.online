@@ -94,6 +94,8 @@ $('#rosterList').onclick=e=>{const card=e.target.closest('.player-card');if(!car
  if(e.target.closest('.toggle-field')){if(!p.onField&&starters(p.team).length>=state.size)return toast(`${state.size} kişilik saha kadrosu dolu`);snapshot();p.onField=!p.onField;if(p.onField){p.x=50;p.y=p.team==='home'?70:30}commit()}}
 function openPlayer(p){$('#editingId').value=p?.id||'';$('#playerName').value=p?.name||'';$('#playerNumber').value=p?.number??'';$('#playerRole').value=p?.role||'Ortasaha';$('#dialogTitle').textContent=p?'Oyuncuyu düzenle':'Oyuncu ekle';$('#playerDialog').showModal()}
 $('#addPlayerBtn').onclick=()=>openPlayer();
+$('#closePlayerDialog').onclick=()=>$('#playerDialog').close();
+$('#cancelPlayerBtn').onclick=()=>$('#playerDialog').close();
 $('#confirmPlayerBtn').onclick=e=>{e.preventDefault();if(!$('#playerForm').reportValidity())return;const id=$('#editingId').value;snapshot();const data={name:$('#playerName').value.trim(),number:+$('#playerNumber').value,role:$('#playerRole').value};if(id)Object.assign(state.players.find(p=>p.id===id),data);else state.players.push({id:uid(),team:activeTeam,...data,onField:false,x:50,y:50});$('#playerDialog').close();commit()};
 $('#matchupList').onclick=e=>{const b=e.target.closest('button');if(!b)return;snapshot();state.markings=state.markings.filter(m=>m.id!==b.dataset.id);commit()};
 $('#notes').oninput=e=>{state.notes=e.target.value;persist()};
