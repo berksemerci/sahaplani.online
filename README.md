@@ -17,6 +17,11 @@
 - Kendi takımının forma rengini seçme
 - Rakip forma rengini otomatik olarak karşıt renkte belirleme
 - Rakip oyuncuların görünürlüğünü ayarlama
+- Rakip oyuncuları ve eşleştirme araçlarını tamamen açıp kapatma
+- Birbiriyle kesişmeyen alan savunması bölgeleri oluşturma
+- Serbest çizim aracıyla özel hareket ve taktik işaretleri ekleme
+- Araç çubuğu veya `Ctrl+Z` / `Ctrl+Y` ile geri alma ve yineleme
+- Aynı takımda tekrarlanan forma numaralarını engelleme
 - Maç planına taktik notları ekleme
 - Tüm tahtayı ve notları PNG görseli olarak paylaşma
 - Taktiği JSON dosyası olarak yedekleme ve geri yükleme
