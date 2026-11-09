@@ -3,8 +3,14 @@
 .player-token.away{opacity:var(--away-opacity)}
 .settings-dialog{width:min(500px,calc(100vw - 24px))}
 .settings-section{border:1px solid #263f35;background:#0a1511;border-radius:13px;padding:14px;margin-top:12px}
+.setting-toggle-row{display:flex;align-items:center;justify-content:space-between;gap:16px}.setting-toggle-row strong{display:block;font-size:13px}.setting-toggle-row small{display:block;color:#7f958b;font-size:10px;line-height:1.5;margin-top:3px}
+.switch{position:relative;width:46px;height:26px;flex:0 0 auto}.switch input{position:absolute;opacity:0;pointer-events:none}.switch span{position:absolute;inset:0;border-radius:20px;background:#263c34;border:1px solid #385348;cursor:pointer;transition:.2s}.switch span:after{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;border-radius:50%;background:#91a39b;transition:.2s}.switch input:checked+span{background:#b9f34a;border-color:#b9f34a}.switch input:checked+span:after{transform:translateX(20px);background:#14200f}
+.settings-section.is-disabled{opacity:.4;pointer-events:none}
 .setting-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.setting-title strong{display:block;font-size:13px}.setting-title small{display:block;color:#7f958b;font-size:10px;line-height:1.5;margin-top:3px}.setting-title b{font-size:12px;color:var(--lime)}
 .range{width:100%;accent-color:var(--lime);margin:14px 0 3px}.range-labels{display:flex;justify-content:space-between;color:#657b71;font-size:8px;text-transform:uppercase;letter-spacing:.08em}
 .settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.settings-grid .btn{font-size:11px}
 .danger-zone{border-color:#482622;background:#160d0c}.danger-zone .danger{margin-top:12px}
+#restoreInput[hidden]{display:none!important}
+.tool:disabled{opacity:.32;cursor:not-allowed;filter:grayscale(1)}.tactic-card.is-disabled{opacity:.42;pointer-events:none}.tactic-card.is-disabled .matchup-list{min-height:56px;display:grid;place-items:center}
+.draw-free{stroke:#fff59d;stroke-width:7;fill:none;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 2px #0008)}
 @media(max-width:760px){.brand-logo{width:36px;height:36px}.top-actions{gap:5px}.settings-grid{grid-template-columns:1fr}.settings-dialog form{padding:16px}}
