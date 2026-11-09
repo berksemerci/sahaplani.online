@@ -1,0 +1,14 @@
+.kit-picker{margin-top:12px;padding:10px;background:#07110e;border:1px solid #1d352c;border-radius:11px}
+.kit-picker-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.kit-picker-head span{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.kit-picker-head small{font-size:8px;color:#71867d}
+.kit-row{display:flex;align-items:center;gap:9px}
+.color-control{position:relative;display:flex;align-items:center;gap:7px;flex:1;background:#11211b;border:1px solid #243f35;border-radius:9px;padding:6px 8px;cursor:pointer}
+.color-control input{position:absolute;width:1px;height:1px;opacity:0}
+.color-control b{font-size:10px}
+.color-control i{margin-left:auto;color:#71867d;font-style:normal}
+.color-control.locked{cursor:default}
+.kit-swatch{width:24px;height:24px;background:var(--home);clip-path:polygon(25% 0,38% 10%,62% 10%,75% 0,100% 20%,84% 39%,78% 31%,78% 100%,22% 100%,22% 31%,16% 39%,0 20%);filter:drop-shadow(0 2px 2px #0008)}
+.kit-swatch.away-shirt{background:var(--away)}
+.versus{font-size:8px;color:#60776e;font-weight:900}
+.color-warning{font-size:8px;color:#ffc58d;line-height:1.35;margin-top:7px}
