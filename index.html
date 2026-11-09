@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="kits.css" />
   <link rel="stylesheet" href="tour.css" />
   <link rel="stylesheet" href="settings.css" />
+  <link rel="stylesheet" href="responsive.css" />
 </head>
 <body>
   <header class="topbar">
@@ -115,12 +116,12 @@
 
   <dialog id="playerDialog">
     <form method="dialog" id="playerForm">
-      <div class="dialog-head"><div><span class="eyebrow">OYUNCU BİLGİSİ</span><h2 id="dialogTitle">Oyuncu ekle</h2></div><button value="cancel" class="close" aria-label="Kapat">×</button></div>
+      <div class="dialog-head"><div><span class="eyebrow">OYUNCU BİLGİSİ</span><h2 id="dialogTitle">Oyuncu ekle</h2></div><button id="closePlayerDialog" type="button" class="close" aria-label="Kapat">×</button></div>
       <input id="editingId" type="hidden" />
       <label>Oyuncu adı<input id="playerName" maxlength="24" required placeholder="Oyuncu adı" /></label>
       <label>Forma numarası<input id="playerNumber" type="number" min="0" max="99" required placeholder="10" /></label>
       <label>Mevki<select id="playerRole"><option>Kaleci</option><option>Defans</option><option>Ortasaha</option><option>Forvet</option></select></label>
-      <div class="dialog-actions"><button value="cancel" class="btn ghost">Vazgeç</button><button id="confirmPlayerBtn" value="default" class="btn primary">Kaydet</button></div>
+      <div class="dialog-actions"><button id="cancelPlayerBtn" type="button" class="btn ghost">Vazgeç</button><button id="confirmPlayerBtn" type="submit" value="default" class="btn primary">Kaydet</button></div>
     </form>
   </dialog>
   <dialog id="settingsDialog" class="settings-dialog">
