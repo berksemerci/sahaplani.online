@@ -63,8 +63,11 @@
           <button class="tool active" data-tool="move" title="Oyuncuları taşı">✥ <span>Taşı</span></button>
           <button class="tool" data-tool="arrow" title="Koşu veya pas oku çiz">↗ <span>Ok</span></button>
           <button class="tool" data-tool="zone" title="Savunma alanı çiz">▧ <span>Alan</span></button>
+          <button class="tool" data-tool="free" title="Serbest çizim yap">✎ <span>Serbest</span></button>
           <button class="tool" data-tool="mark" title="Adam adama eşleştir">⌁ <span>Eşleştir</span></button>
           <button class="tool" data-tool="erase" title="Çizimleri sil">⌫ <span>Sil</span></button>
+          <button id="boardUndoBtn" class="tool history-tool" title="Geri al (Ctrl+Z)" aria-label="Geri al">↶</button>
+          <button id="boardRedoBtn" class="tool history-tool" title="Yinele (Ctrl+Y)" aria-label="Yinele">↷</button>
         </div>
         <div class="toolbar-group selectors">
           <label>Diziliş <select id="formationSelect"></select></label>
@@ -128,6 +131,12 @@
     <form method="dialog">
       <div class="dialog-head"><div><span class="eyebrow">UYGULAMA</span><h2>Ayarlar</h2></div><button value="cancel" class="close" aria-label="Kapat">×</button></div>
       <section class="settings-section">
+        <div class="setting-toggle-row">
+          <div><strong>Rakip görünümü</strong><small>Rakip oyuncularını ve eşleştirme araçlarını aç veya kapat.</small></div>
+          <label class="switch"><input id="showAwayToggle" type="checkbox" checked /><span></span></label>
+        </div>
+      </section>
+      <section id="awayVisibilitySettings" class="settings-section">
         <div class="setting-title"><div><strong>Rakip görünürlüğü</strong><small>Rakip forma ve isimlerinin saydamlığını ayarla.</small></div><b id="awayOpacityValue">55%</b></div>
         <input id="awayOpacity" class="range" type="range" min="35" max="100" step="5" value="55" />
         <div class="range-labels"><span>Daha silik</span><span>Tam görünür</span></div>
