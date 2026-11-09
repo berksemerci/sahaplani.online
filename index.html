@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="tour.css" />
   <link rel="stylesheet" href="settings.css" />
   <link rel="stylesheet" href="responsive.css" />
+  <link rel="stylesheet" href="substitution.css" />
 </head>
 <body>
   <header class="topbar">
@@ -78,11 +79,20 @@
       <div class="pitch-wrap">
         <div id="pitch" class="pitch" aria-label="Futbol taktik sahası">
           <div class="grass-stripes"></div>
-          <div class="field-lines" aria-hidden="true">
-            <div class="outline"></div><div class="halfway"></div><div class="center-circle"></div><div class="center-dot"></div>
-            <div class="penalty top"></div><div class="goal-box top"></div><div class="goal top"></div><div class="spot top"></div><div class="arc top"></div>
-            <div class="penalty bottom"></div><div class="goal-box bottom"></div><div class="goal bottom"></div><div class="spot bottom"></div><div class="arc bottom"></div>
-          </div>
+          <svg class="field-svg" viewBox="0 0 1000 1400" preserveAspectRatio="none" aria-hidden="true">
+            <defs><pattern id="goalNet" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 0H18M0 0V18" fill="none" stroke="#e8f3e466" stroke-width="2"/></pattern></defs>
+            <g class="goal-nets"><rect x="420" y="10" width="160" height="32" fill="url(#goalNet)"/><rect x="420" y="1358" width="160" height="32" fill="url(#goalNet)"/></g>
+            <g class="field-strokes">
+              <rect x="30" y="42" width="940" height="1316"/>
+              <line x1="30" y1="700" x2="970" y2="700"/><circle cx="500" cy="700" r="100"/>
+              <rect x="250" y="42" width="500" height="224"/><rect x="370" y="42" width="260" height="98"/><rect x="420" y="10" width="160" height="32"/>
+              <path d="M408 266 A135 135 0 0 1 592 266"/>
+              <rect x="250" y="1134" width="500" height="224"/><rect x="370" y="1260" width="260" height="98"/><rect x="420" y="1358" width="160" height="32"/>
+              <path d="M408 1134 A135 135 0 0 0 592 1134"/>
+              <path d="M30 60 A18 18 0 0 0 48 42M952 42 A18 18 0 0 0 970 60M30 1340 A18 18 0 0 1 48 1358M952 1358 A18 18 0 0 1 970 1340"/>
+            </g>
+            <g class="field-dots"><circle cx="500" cy="700" r="5"/><circle cx="500" cy="168" r="5"/><circle cx="500" cy="1232" r="5"/></g>
+          </svg>
           <svg id="drawingLayer" class="drawing-layer" viewBox="0 0 1000 1400" preserveAspectRatio="none" aria-hidden="true">
             <defs>
               <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="currentColor" /></marker>
@@ -125,6 +135,15 @@
       <label>Forma numarası<input id="playerNumber" type="number" min="0" max="99" required placeholder="10" /></label>
       <label>Mevki<select id="playerRole"><option>Kaleci</option><option>Defans</option><option>Ortasaha</option><option>Forvet</option></select></label>
       <div class="dialog-actions"><button id="cancelPlayerBtn" type="button" class="btn ghost">Vazgeç</button><button id="confirmPlayerBtn" type="submit" value="default" class="btn primary">Kaydet</button></div>
+    </form>
+  </dialog>
+  <dialog id="substitutionDialog" class="substitution-dialog">
+    <form method="dialog">
+      <div class="dialog-head"><div><span class="eyebrow">OYUNCU DEĞİŞİKLİĞİ</span><h2>Yerine oyuncu seç</h2></div><button value="cancel" class="close" aria-label="Kapat">×</button></div>
+      <div id="substitutionCurrent" class="substitution-current"></div>
+      <p class="substitution-hint">Seçilen yedek oyuncu aynı saha konumuna ve varsa savunma eşleşmesine geçer.</p>
+      <div id="substitutionList" class="substitution-list"></div>
+      <div class="dialog-actions"><button value="cancel" class="btn ghost">Vazgeç</button></div>
     </form>
   </dialog>
   <dialog id="settingsDialog" class="settings-dialog">
