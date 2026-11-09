@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1713" />
+  <title>Saha Planı — Halı Saha Taktik Tahtası</title>
+  <meta name="description" content="7v7'den 11v11'e sürükle-bırak futbol taktik tahtası." />
+  <link rel="icon" type="image/png" href="assets/saha-plani-logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="kits.css" />
+  <link rel="stylesheet" href="tour.css" />
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-logo" src="assets/saha-plani-logo.png" alt="Saha Planı" />
+      <div><strong>SAHA PLANI</strong><small>sahaplani.online</small></div>
+    </div>
+    <div class="top-actions">
+      <button id="helpBtn" class="btn help-btn" title="Kullanım rehberini aç">? <span>Yardım</span></button>
+      <button id="settingsBtn" class="btn help-btn" title="Ayarları aç">⚙ <span>Ayarlar</span></button>
+      <button id="undoBtn" class="icon-btn" title="Geri al" aria-label="Geri al">↶</button>
+      <button id="redoBtn" class="icon-btn" title="Yinele" aria-label="Yinele">↷</button>
+      <button id="saveBtn" class="btn ghost">Kaydet</button>
+      <button id="exportBtn" class="btn primary">Görseli paylaş</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="panel roster-panel">
+      <div class="panel-head">
+        <div><span class="eyebrow">MAÇ KADROSU</span><h1>Oyuncular</h1></div>
+        <select id="squadSize" aria-label="Kadro büyüklüğü">
+          <option value="7">7v7</option><option value="8">8v8</option><option value="9">9v9</option>
+          <option value="10">10v10</option><option value="11">11v11</option>
+        </select>
+      </div>
+      <div class="team-tabs" role="tablist">
+        <button class="team-tab active" data-team="home"><span class="dot home"></span>Bizim takım</button>
+        <button class="team-tab" data-team="away"><span class="dot away"></span>Rakip</button>
+      </div>
+      <div class="kit-picker">
+        <div class="kit-picker-head"><span>Forma renkleri</span><small>Rakip renk otomatik seçilir</small></div>
+        <div class="kit-row">
+          <label class="color-control"><input id="homeColor" type="color" value="#d8ff52" /><span class="kit-swatch home-shirt"></span><b>Biz</b></label>
+          <span class="versus">VS</span>
+          <div class="color-control locked" title="Rakip rengi kontrasta göre otomatik belirlenir"><span class="kit-swatch away-shirt"></span><b>Rakip</b><i>⌁</i></div>
+        </div>
+        <div id="colorWarning" class="color-warning" hidden></div>
+      </div>
+      <div class="roster-summary"><span id="starterCount">7 sahada</span><span id="benchCount">0 yedek</span></div>
+      <div id="rosterList" class="roster-list"></div>
+      <button id="addPlayerBtn" class="add-player">＋ Oyuncu ekle</button>
+      <p class="hint">Oyuncuyu sahaya almak veya yedeğe çekmek için kartındaki saha simgesine dokun.</p>
+    </aside>
+
+    <section class="board-column">
+      <div class="board-toolbar">
+        <div class="toolbar-group" id="toolGroup">
+          <button class="tool active" data-tool="move" title="Oyuncuları taşı">✥ <span>Taşı</span></button>
+          <button class="tool" data-tool="arrow" title="Koşu veya pas oku çiz">↗ <span>Ok</span></button>
+          <button class="tool" data-tool="zone" title="Savunma alanı çiz">▧ <span>Alan</span></button>
+          <button class="tool" data-tool="mark" title="Adam adama eşleştir">⌁ <span>Eşleştir</span></button>
+          <button class="tool" data-tool="erase" title="Çizimleri sil">⌫ <span>Sil</span></button>
+        </div>
+        <div class="toolbar-group selectors">
+          <label>Diziliş <select id="formationSelect"></select></label>
+          <button id="clearDrawingsBtn" class="btn compact">Çizimleri temizle</button>
+        </div>
+      </div>
+
+      <div class="pitch-wrap">
+        <div id="pitch" class="pitch" aria-label="Futbol taktik sahası">
+          <div class="grass-stripes"></div>
+          <div class="field-lines" aria-hidden="true">
+            <div class="outline"></div><div class="halfway"></div><div class="center-circle"></div><div class="center-dot"></div>
+            <div class="penalty top"></div><div class="goal-box top"></div><div class="goal top"></div><div class="spot top"></div><div class="arc top"></div>
+            <div class="penalty bottom"></div><div class="goal-box bottom"></div><div class="goal bottom"></div><div class="spot bottom"></div><div class="arc bottom"></div>
+          </div>
+          <svg id="drawingLayer" class="drawing-layer" viewBox="0 0 1000 1400" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="currentColor" /></marker>
+            </defs>
+            <g id="zones"></g><g id="arrows"></g><g id="markings"></g><g id="draft"></g>
+          </svg>
+          <div id="playersLayer" class="players-layer"></div>
+          <div id="pitchMessage" class="pitch-message" hidden></div>
+        </div>
+        <div class="legend"><span><i class="home"></i>Bizim takım</span><span><i class="away"></i>Rakip</span><span><i class="mark"></i>Adam eşleşmesi</span></div>
+      </div>
+    </section>
+
+    <aside class="panel tactics-panel">
+      <div class="panel-head"><div><span class="eyebrow">OYUN PLANI</span><h2>Savunma</h2></div></div>
+      <div class="strategy-switch">
+        <button class="active" data-strategy="man">Adam adama</button><button data-strategy="zone">Alan savunması</button>
+      </div>
+      <div id="strategyHelp" class="strategy-help">
+        <strong>Adam adama eşleştirme</strong>
+        <p>“Eşleştir” aracını seç. Önce kendi oyuncuna, sonra takip edeceği rakibe dokun.</p>
+      </div>
+      <div class="tactic-card">
+        <div class="tactic-card-head"><span>Eşleşmeler</span><b id="markCount">0</b></div>
+        <div id="matchupList" class="matchup-list"><p class="empty">Henüz eşleşme yok.</p></div>
+      </div>
+      <div class="notes-block">
+        <label for="notes">Taktik notları</label>
+        <textarea id="notes" placeholder="Örn. Top rakipteyken orta blokta kal, kanadı çizgiye yönlendir…"></textarea>
+      </div>
+      <div class="autosave"><span class="pulse"></span>Değişiklikler bu cihazda otomatik saklanır</div>
+    </aside>
+  </main>
+
+  <dialog id="playerDialog">
+    <form method="dialog" id="playerForm">
+      <div class="dialog-head"><div><span class="eyebrow">OYUNCU BİLGİSİ</span><h2 id="dialogTitle">Oyuncu ekle</h2></div><button value="cancel" class="close" aria-label="Kapat">×</button></div>
+      <input id="editingId" type="hidden" />
+      <label>Oyuncu adı<input id="playerName" maxlength="24" required placeholder="Oyuncu adı" /></label>
+      <label>Forma numarası<input id="playerNumber" type="number" min="0" max="99" required placeholder="10" /></label>
+      <label>Mevki<select id="playerRole"><option>Kaleci</option><option>Defans</option><option>Ortasaha</option><option>Forvet</option></select></label>
+      <div class="dialog-actions"><button value="cancel" class="btn ghost">Vazgeç</button><button id="confirmPlayerBtn" value="default" class="btn primary">Kaydet</button></div>
+    </form>
+  </dialog>
+  <dialog id="settingsDialog" class="settings-dialog">
+    <form method="dialog">
+      <div class="dialog-head"><div><span class="eyebrow">UYGULAMA</span><h2>Ayarlar</h2></div><button value="cancel" class="close" aria-label="Kapat">×</button></div>
+      <section class="settings-section">
+        <div class="setting-title"><div><strong>Rakip görünürlüğü</strong><small>Rakip forma ve isimlerinin saydamlığını ayarla.</small></div><b id="awayOpacityValue">55%</b></div>
+        <input id="awayOpacity" class="range" type="range" min="35" max="100" step="5" value="55" />
+        <div class="range-labels"><span>Daha silik</span><span>Tam görünür</span></div>
+      </section>
+      <section class="settings-section">
+        <div class="setting-title"><div><strong>Taktik yedekleme</strong><small>Oyuncular, çizimler, renkler ve notlar birlikte saklanır.</small></div></div>
+        <div class="settings-grid"><button id="backupBtn" type="button" class="btn ghost">↓ Taktiği yedekle</button><button id="restoreBtn" type="button" class="btn ghost">↑ Yedekten yükle</button></div>
+        <input id="restoreInput" type="file" accept="application/json,.json" hidden />
+      </section>
+      <section class="settings-section danger-zone">
+        <div class="setting-title"><div><strong>Yeni tahta</strong><small>Oyuncular, çizimler, eşleşmeler ve notlar silinir.</small></div></div>
+        <button id="resetBtn" type="button" class="btn danger">Tahtayı sıfırla</button>
+      </section>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <div id="tourOverlay" class="tour-overlay" hidden>
+    <section class="tour-card" role="dialog" aria-modal="true" aria-labelledby="tourTitle">
+      <div class="tour-top"><span id="tourStepLabel">1 / 6</span><button id="tourClose" aria-label="Rehberi kapat">×</button></div>
+      <div id="tourIcon" class="tour-icon" aria-hidden="true">⚽</div>
+      <h2 id="tourTitle"></h2>
+      <p id="tourText"></p>
+      <div id="tourDots" class="tour-dots" aria-hidden="true"></div>
+      <div class="tour-actions"><button id="tourBack" class="btn ghost">Geri</button><button id="tourNext" class="btn primary">Devam</button></div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
