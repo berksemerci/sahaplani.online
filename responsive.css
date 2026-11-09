@@ -1,0 +1,53 @@
+/* Fluid scale shared by desktop, tablet and mobile layouts. */
+html{font-size:clamp(14px,1.15vw,16px)}
+body{overflow-x:hidden}
+.topbar{height:clamp(60px,6vw,76px);padding-inline:clamp(10px,2vw,26px);gap:12px}
+.brand{min-width:0}.brand-logo{width:clamp(34px,3.5vw,48px);height:clamp(34px,3.5vw,48px);flex:0 0 auto}.brand strong{font-size:clamp(12px,1.15vw,16px)}.brand small{font-size:clamp(8px,.8vw,11px)}
+.top-actions{min-width:0;align-items:center}.top-actions .btn,.top-actions .icon-btn{font-size:clamp(11px,.9vw,14px);padding:clamp(7px,.75vw,10px) clamp(8px,1vw,14px)}
+.app-shell{grid-template-columns:clamp(235px,19vw,300px) minmax(390px,1fr) clamp(245px,19vw,300px);min-height:calc(100dvh - clamp(60px,6vw,76px))}
+.panel{padding:clamp(14px,1.4vw,22px)}
+.panel h1,.panel h2,.dialog-head h2{font-size:clamp(19px,1.7vw,24px)}
+.roster-list{max-height:calc(100dvh - 400px)}
+.player-card{grid-template-columns:clamp(30px,2.4vw,36px) 1fr auto;padding:clamp(6px,.7vw,9px);gap:clamp(6px,.65vw,10px)}
+.mini-shirt{width:clamp(29px,2.3vw,34px);height:clamp(29px,2.3vw,34px);font-size:clamp(11px,.9vw,14px)}
+.player-meta strong{font-size:clamp(11px,.85vw,13px)}.player-meta small{font-size:clamp(8px,.68vw,10px)}
+.board-column{padding:clamp(10px,1.2vw,18px)}
+.board-toolbar{flex-wrap:wrap;gap:8px}.toolbar-group{flex-wrap:wrap}.tool{font-size:clamp(11px,.9vw,14px);padding:clamp(7px,.7vw,9px) clamp(8px,.8vw,11px)}
+.pitch-wrap{width:100%;max-width:none}.pitch{width:min(100%,calc((100dvh - 170px)*5/7));max-height:none}
+.player-token{width:clamp(38px,3.2vw,50px);height:clamp(38px,3.2vw,50px)}
+.shirt{font-size:clamp(12px,1.1vw,16px)}.player-label{top:calc(100% - 1px);font-size:clamp(8px,.65vw,10px);max-width:clamp(66px,6vw,92px)}
+.strategy-help p,.notes-block textarea{font-size:clamp(10px,.75vw,12px)}
+
+/* Compact desktop and landscape tablet. */
+@media (max-width:1180px){
+  .app-shell{grid-template-columns:clamp(220px,25vw,270px) minmax(380px,1fr)}
+  .tactics-panel{grid-column:1/-1;display:grid;grid-template-columns:minmax(180px,.7fr) 1fr 1fr;gap:14px;border-left:0;border-top:1px solid var(--line)}
+  .tactics-panel .notes-block{grid-column:2}.tactics-panel .autosave{grid-column:1/-1}.pitch{width:min(100%,680px)}
+}
+
+/* Portrait tablet and mobile use a single reading column. */
+@media (max-width:780px){
+  .topbar{position:sticky;height:60px;padding-inline:10px}.brand small{display:none}.brand strong{font-size:12px;letter-spacing:.08em}.brand-logo{width:36px;height:36px}
+  .top-actions{gap:4px}.top-actions .btn,.top-actions .icon-btn{min-width:36px;min-height:36px;padding:7px 9px}.top-actions .help-btn span,.top-actions .ghost,.top-actions .icon-btn{display:none}#exportBtn{font-size:11px;white-space:nowrap}
+  .app-shell{display:flex;flex-direction:column;min-height:calc(100dvh - 60px)}
+  .board-column{order:1;padding:10px 8px 14px}.roster-panel{order:2;border-right:0;border-top:1px solid var(--line)}.tactics-panel{order:3;display:block;border-top:1px solid var(--line)}
+  .board-toolbar{align-items:center;justify-content:space-between}.toolbar-group{gap:4px}.tool{min-width:38px;min-height:38px;font-size:16px;padding:7px}.tool span{display:none}.selectors{margin-left:auto}.selectors label{font-size:9px}.selectors select{max-width:105px}.btn.compact{display:none}
+  .pitch{width:min(100%,calc(100dvw - 16px));max-width:620px}
+  .player-token{width:clamp(34px,10vw,44px);height:clamp(34px,10vw,44px)}.shirt{font-size:clamp(11px,3.5vw,15px)}.player-label{font-size:clamp(7px,2.25vw,9px);max-width:clamp(58px,20vw,82px);padding:2px 4px}
+  .roster-list{max-height:360px}.player-card{grid-template-columns:34px 1fr auto}.player-meta strong{font-size:12px}.player-meta small{font-size:9px}
+  .tactics-panel>*{margin-top:12px}.legend{flex-wrap:wrap;gap:8px 14px}.panel{padding:16px}
+  dialog{max-height:calc(100dvh - 24px);overflow:auto}.dialog-actions{position:sticky;bottom:0;background:#0c1915;padding-top:10px}.dialog-actions .btn{min-height:42px}
+}
+
+/* Small phones: preserve touch targets without crowding the pitch. */
+@media (max-width:390px){
+  .brand div{display:none}.top-actions{margin-left:auto}#exportBtn{padding-inline:8px}
+  .board-toolbar{gap:6px}.tool{min-width:35px;min-height:35px}.selectors select{padding:6px;max-width:92px}
+  .player-token{width:34px;height:34px}.player-label{max-width:62px}.panel{padding:13px}
+  .team-tab{font-size:11px}.kit-picker-head small{display:none}
+}
+
+/* Large displays: keep interaction elements readable without over-expanding the board. */
+@media (min-width:1600px){
+  .app-shell{grid-template-columns:300px minmax(620px,1fr) 300px}.pitch{max-width:760px}.player-token{width:50px;height:50px}
+}
