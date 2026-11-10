@@ -1,11 +1,11 @@
 .help-btn{background:#12231d;color:#d7e5df;padding:9px 12px}.help-btn:first-letter{font-weight:900;color:var(--lime)}
 .tour-overlay{position:fixed;inset:0;z-index:100;background:#020806dc;backdrop-filter:blur(9px);display:grid;place-items:center;padding:18px}
 .tour-overlay[hidden]{display:none}
-.tour-card{width:min(440px,100%);background:linear-gradient(145deg,#10231c,#09140f);border:1px solid #38564a;border-radius:22px;box-shadow:0 34px 100px #000;padding:20px 24px 24px;text-align:center}
+.tour-card{width:min(460px,100%);max-height:calc(100dvh - 30px);overflow:auto;background:linear-gradient(145deg,#10231c,#09140f);border:1px solid #38564a;border-radius:22px;box-shadow:0 34px 100px #000;padding:20px 24px 24px;text-align:center}
 .tour-top{display:flex;justify-content:space-between;align-items:center;color:#789086;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
 .tour-top button{border:0;background:transparent;color:#9eb0a9;font-size:26px;cursor:pointer}
 .tour-icon{width:76px;height:76px;margin:12px auto 16px;border-radius:22px;display:grid;place-items:center;font-size:34px;background:#d8ff5217;border:1px solid #d8ff5240}
-.tour-card h2{font-size:26px;letter-spacing:-.04em;margin:0 0 10px}.tour-card p{color:#a0b2aa;font-size:13px;line-height:1.65;min-height:64px;margin:0 auto 18px;max-width:350px}
+.tour-card h2{font-size:26px;letter-spacing:-.04em;margin:0 0 10px}.tour-card p{color:#a0b2aa;font-size:13px;line-height:1.6;margin:0 auto 12px;max-width:370px}\n.tour-points{list-style:none;margin:0 auto 16px;padding:0;max-width:370px;text-align:left;display:grid;gap:7px}.tour-points li{position:relative;padding-left:19px;color:#c9d6d0;font-size:11px;line-height:1.45}.tour-points li:before{content:"✓";position:absolute;left:0;top:0;color:var(--lime);font-weight:900}
 .tour-dots{display:flex;justify-content:center;gap:6px;margin:5px 0 20px}.tour-dots i{width:6px;height:6px;border-radius:50%;background:#375147}.tour-dots i.active{width:20px;border-radius:4px;background:var(--lime)}
 .tour-actions{display:flex;justify-content:space-between;gap:10px}.tour-actions .btn{min-width:96px}.tour-actions .primary{margin-left:auto}
 @media(max-width:760px){.help-btn span{display:none}.help-btn{padding:8px 11px}.tour-card{padding:17px 18px 20px}.tour-icon{width:64px;height:64px}.tour-card h2{font-size:23px}}
